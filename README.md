@@ -17,31 +17,38 @@ https://blueteamlabs.online
 <br>
 First, we will go to Blue Team Lab Online and create an account. We will tackle a retired challenge named "Network Analysis Web Shell".
 Once you have downloaded it, go ahead and extract the folder. The password is "btlo", as shown on the website. Let's open up the file with "Wireshark".
+
 <img src="images/1.png" width="350">
 <br>
 
 First, we need to learn about this file. Go to "Statistics" on the top menu and click "Capture File Properties". Here, you can find detailed information about this file, such as when the packet was created. It might be good to verify with a client if the timestamp is correct.
+
 <img src="images/2.png" width="800">
 <br>
 
 Now, let's go back to "Statistics" and click "Protocol Hierarchy Statistics". Here, you can see many protocols such as SMB, HTTPS, and SSH. It's good to check, as we can read plain text of protocols that were in use.
+
 <img src="images/3.png" width="200">
 <img src="images/4.png" width="600">
 <br>
 
 Next is "Conversations" under "Statistics", then click on "IPv4". We will sort them out by "Bytes" by clicking "Bytes". Now we see that 10.251.96.4 has been sending packets to 10.251.96.5.
+
 <img src="images/5.png" width="600">
 <br>
 
 Let's click on "TCP". Immediately, we can notice something. 10.251.96.5 has been sending packets from port 41675 to various ports on 10.251.96.5. We can see more and more as we scroll down. This might indicate that there was scanning activity.
-<img src="images/6.png" width="700">
+
+<img src="images/6.png" width="600">
 <br>
 
 Let's take a look again, and we will find different packets on destination ports 80 and 22. This indicates that ports 80 and 22 have responded to SYN-ACK. Now we know ports 80 and 22 on 10.251.96.5 are open. From the look of it we can assume that 10.251.96.5 might be an webserver.
-<img src="images/7.png" width="700">
+
+<img src="images/7.png" width="600">
 <br>
 If you keep scrolling down, you will find 10.251.96.5 answering back to 10.251.96.4 on port 4422 with unusual packet length. I wonder what this means?
-<img src="images/8.png" width="700">
+
+<img src="images/8.png" width="600">
 <br>
 Let's exit out and go back to the pcap file. If you look at the time, it's now showing much but just decimals. Let's change that so that we can read. Click on "View", then "Time and Display Format", then "UTC date and time of day".
 <br>
